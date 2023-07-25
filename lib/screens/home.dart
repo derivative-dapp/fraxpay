@@ -455,7 +455,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ),
                                         ),
                                         trailing: Text(
-                                          "${EtherAmount.fromBase10String(EtherUnit.wei, transactions[ind]['value']).getValueInUnit(EtherUnit.ether)} FRAX USD",
+                                          "${EtherAmount.fromBase10String(EtherUnit.wei, transactions[ind]['value']).getValueInUnit(EtherUnit.ether).toStringAsFixed(2)} FRAX USD",
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             color: ownAddress(
