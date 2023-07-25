@@ -33,7 +33,7 @@ class _RecieveScreenState extends State<RecieveScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const Text(
-                "Scan using Fanpay App",
+                "Scan using Fraxpay App",
                 style: TextStyle(
                   color: Colors.black87,
                   fontWeight: FontWeight.w500,

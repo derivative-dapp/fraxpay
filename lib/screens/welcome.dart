@@ -26,9 +26,9 @@ class WelcomeState extends State<Welcome> {
             ),
             const SizedBox(height: 40),
             const Text(
-              "Welcome to FanPay",
+              "Welcome to FraxPay",
               style: TextStyle(
-                color: Colors.black87,
+                color: Colors.white,
                 fontSize: 24,
                 fontWeight: FontWeight.w500,
               ),

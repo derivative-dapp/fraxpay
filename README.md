@@ -1,22 +1,23 @@
 
-# Fanpay🪶
-Fanpay is a self-custody _wallet_ that never takes control of your keys. Keys are stored locally on your device, Upgrade your wallet to experience a new level of security, convenience and flexibility!
 
-![Discord Image 1](https://i.ibb.co/HV25B1C/Group-4-1.png)
+# Fraxpay🪶
+Fraxpay is a self-custody _wallet_ that never takes control of your keys. Keys are stored locally on your device, Upgrade your wallet to experience a new level of security, convenience and flexibility! Maintain FRAX (dollar-pegged), frxETH (ETH-pegged), and FPI (CPI-pegged) while never leaving the app.
 
-> ⚠️You can try Fanpay by downloading the app from the link below, the app is not intended to be used for mainstream purposes yet, it's still in its early days.⚠️
-> [Download Fanpay](https://github.com/leostelon/fanpay/blob/main/app-release.apk)
+![Discord Image 1](https://i.ibb.co/5YhRW4Q/Mac-Book-Pro-14-5.png)
+
+> ⚠️You can try Fraxpay by downloading the app from the link below, the app is not intended to be used for mainstream purposes yet, it's still in its early days.⚠️
+> [Download Fraxpay](https://github.com/leostelon/fraxpay/blob/main/app-release.apk)
 
 # Get Started
 
 The product contains two code bases, Server to retrieve Tokens and NFTs via APIs. And the Application, the GUI which can be accessed on the mobile app.
 
-1. [Application](https://github.com/leostelon/fanpay)
+1. [Application](https://github.com/leostelon/fraxpay)
 2. [Server](https://github.com/leostelon/fanpay-server)
 
 **Download Mobile App**
 
-[Download Fanpay](https://github.com/leostelon/fanpay/blob/main/app-release.apk)
+[Download Fraxpay](https://github.com/leostelon/fraxpay/blob/main/app-release.apk)
 
 # Technology
 
@@ -32,8 +33,8 @@ Follow the below steps to run it locally.
 > ⚠️Make sure you have installed all the required softwares and packages to run a flutter application.⚠️
 >  
 1. Clone Repo.
-> $ git clone https://github.com/leostelon/fanpay fanpay
-> $ cd fanpay
+> $ git clone https://github.com/leostelon/fraxpay fraxpay
+> $ cd fraxpay
 2. Get dependencies
 >  $ dart pub get
 4. Run the client!
@@ -41,6 +42,6 @@ Follow the below steps to run it locally.
 
 ## Todo👨‍💻
  - [x] MVP
- - [x] ERC20 & ERC721
- - [ ] Token transactions
+ - [x] ERC20 
+ - [x] Token transactions
  - [ ] Biometrics
