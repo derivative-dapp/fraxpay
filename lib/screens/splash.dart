@@ -42,6 +42,7 @@ class _SplashState extends State<Splash> {
             const CircleAvatar(
               radius: 60,
               backgroundImage: AssetImage("assets/logo.png"),
+              backgroundColor: Colors.transparent,
             ),
             SizedBox(
               width: (MediaQuery.sizeOf(context).width / 100) * 25,

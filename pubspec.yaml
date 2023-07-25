@@ -25,9 +25,10 @@ dependencies:
   qr_code_scanner: ^1.0.1
   url_launcher: ^6.1.11
   flutter_launcher_icons: ^0.13.1
+  web_socket_channel: ^2.4.0
 
 flutter_icons:
-  image_path: "icon/icon.png" 
+  image_path: "icon/icon.png"
   android: true
   ios: true
   # optionally, as transparency is not allowed on app store
@@ -43,6 +44,7 @@ flutter:
 
   assets:
     - assets/
+    - lib/utils/abi.json
   #   - images/a_dot_ham.jpeg
 
   fonts:

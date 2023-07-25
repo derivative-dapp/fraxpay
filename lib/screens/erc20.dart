@@ -64,7 +64,7 @@ class _ERC20State extends State<ERC20> {
                     child: Column(
                       children: [
                         const Text(
-                          "You don't own any Tokens🥲",
+                          "You don't own any Frax 🥲",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                           ),

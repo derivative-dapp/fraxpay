@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:fantom/api/ftmscan.dart';
 import 'package:fantom/themes.dart';
-import 'package:fantom/utils/wallet.dart';
+import 'package:fantom/utils/token.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -27,11 +27,10 @@ class _HomeScreenState extends State<HomeScreen> {
   List transactions = [];
 
   Future<void> gB() async {
-    EtherAmount b =
-        await ethClient.getBalance(EthereumAddress.fromHex(address));
+    String b = await getBalance(address);
     if (!mounted) return;
     setState(() {
-      balance = b.getValueInUnit(EtherUnit.ether).toStringAsFixed(3).toString();
+      balance = b;
     });
   }
 
@@ -137,7 +136,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: (MediaQuery.of(context).size.height / 100) * 22.5,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(32),
-                        color: const Color.fromRGBO(59, 70, 241, 1),
+                        color: primaryColor,
                       ),
                       child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -157,7 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                   const SizedBox(height: 8),
                                   Text(
-                                    "$balance FTM",
+                                    "$balance FRX",
                                     style: const TextStyle(
                                       fontSize: 38,
                                       fontWeight: FontWeight.w500,
@@ -167,13 +166,14 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.all(16.0),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 10.0, horizontal: 16),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Image.asset(
-                                    "assets/ftm-logo.png",
+                                    "assets/frax-logo.png",
                                     height: 28,
                                     color: Colors.white,
                                   ),
@@ -455,7 +455,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ),
                                         ),
                                         trailing: Text(
-                                          "${EtherAmount.fromBase10String(EtherUnit.wei, transactions[ind]['value']).getValueInUnit(EtherUnit.ether)} FTM",
+                                          "${EtherAmount.fromBase10String(EtherUnit.wei, transactions[ind]['value']).getValueInUnit(EtherUnit.ether)} FRAX USD",
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             color: ownAddress(
