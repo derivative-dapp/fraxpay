@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart';
 import 'package:web3dart/web3dart.dart';
 import 'package:web_socket_channel/io.dart';
@@ -49,4 +50,21 @@ getBalance(String address) async {
   return (EtherAmount.fromBigInt(EtherUnit.wei, balance.first)
       .getValueInUnit(EtherUnit.ether)
       .toStringAsFixed(2));
+}
+
+sendToken(String address, value) async {
+  final contract = await getContract();
+
+  final fn = contract.function('transfer');
+
+  final credentials = EthPrivateKey.fromHex(GetStorage().read("privateKey"));
+
+  await client.sendTransaction(
+    credentials,
+    Transaction.callContract(
+        contract: contract,
+        function: fn,
+        parameters: [EthereumAddress.fromHex(address), value]),
+    chainId: 137,
+  );
 }

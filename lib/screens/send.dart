@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:fantom/components/button.dart';
 import 'package:fantom/components/select_address_modal.dart';
 import 'package:fantom/themes.dart';
+import 'package:fantom/utils/token.dart';
 import 'package:fantom/utils/wallet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -23,7 +24,15 @@ class _SendScreenState extends State<SendScreen> {
   bool loading = false;
   late TextEditingController controller;
   String balance = "0";
+  String frxBalance = "0";
   late String? address;
+
+  void gFRXB() async {
+    String b = await getBalance(GetStorage().read("address"));
+    setState(() {
+      frxBalance = b;
+    });
+  }
 
   void gB() async {
     EtherAmount b = await ethClient
@@ -34,23 +43,13 @@ class _SendScreenState extends State<SendScreen> {
   }
 
   void sc() async {
-    String p = "0x${GetStorage().read("privateKey")}";
-    Credentials credentials = EthPrivateKey.fromHex(p);
     setState(() {
       loading = true;
     });
-    await ethClient.sendTransaction(
-      credentials,
-      Transaction(
-        to: EthereumAddress.fromHex(
-            '0xCB171Eb1b9bb01763326d1D842f3b5C6422Fdec9'),
-        maxGas: 100000,
-        value: EtherAmount.inWei(BigInt.from(
-            double.parse(controller.text.replaceAll(" FTM", "")) *
-                (pow(10, 18)))),
-      ),
-      chainId: 250,
-    );
+    await sendToken(
+        address!,
+        BigInt.from(double.parse(controller.text.replaceAll(" FRX", "")) *
+            (pow(10, 18))));
     setState(() {
       loading = false;
     });
@@ -64,8 +63,9 @@ class _SendScreenState extends State<SendScreen> {
   @override
   void initState() {
     super.initState();
-    controller = TextEditingController(text: "0 FTM");
+    controller = TextEditingController(text: "0 FRX");
     gB();
+    gFRXB();
     address = argumentData;
   }
 
@@ -118,9 +118,9 @@ class _SendScreenState extends State<SendScreen> {
                     controller: controller,
                     onChanged: (v) {
                       controller.value = controller.value.copyWith(
-                        text: "${controller.text} FTM",
+                        text: "${controller.text} FRX",
                         selection: TextSelection.collapsed(
-                            offset: "${controller.text} FTM".length - 4),
+                            offset: "${controller.text} FRX".length - 4),
                       );
                     },
                     style: const TextStyle(
@@ -148,7 +148,14 @@ class _SendScreenState extends State<SendScreen> {
             ),
             const SizedBox(height: 12),
             Text(
-              "Your balance: $balance FTM",
+              "Your balance: $frxBalance FRX",
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                color: Colors.grey.shade400,
+              ),
+            ),
+            Text(
+              "Matic balance: $balance MAT",
               style: TextStyle(
                 fontWeight: FontWeight.w500,
                 color: Colors.grey.shade400,

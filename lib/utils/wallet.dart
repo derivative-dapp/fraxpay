@@ -5,7 +5,9 @@ import 'package:ed25519_hd_key/ed25519_hd_key.dart';
 import 'package:hex/hex.dart';
 
 var client = http.Client();
-var ethClient = Web3Client("https://rpc.ankr.com/fantom", client);
+var ethClient = Web3Client(
+    "https://polygon-mainnet.infura.io/v3/c731d68b09e6477fa3c86fa92380133e",
+    client);
 
 String generateMnemonic() {
   return bip39.generateMnemonic();
